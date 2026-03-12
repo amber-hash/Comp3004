@@ -69,6 +69,11 @@ bool MarketManager::isOnWaitlist(Vendor* vendor, MarketDate* date) {
     return DataStore::instance().vendorOnWaitlist(vendor->getId(), date->getId());
 }
 
+bool MarketManager::isWaitlistNotified(Vendor* vendor, MarketDate* date) {
+    if (!vendor || !date) return false;
+    return DataStore::instance().vendorWaitlistNotified(vendor->getId(), date->getId());
+}
+
 // ── Vendor Data ───────────────────────────────────────────────────────────────
 
 QList<Booking> MarketManager::getBookingsForVendor(Vendor* vendor) {

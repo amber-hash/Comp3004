@@ -266,17 +266,18 @@ void MarketScheduleScreen::updateActionButtons() {
         return;
     }
 
-    bool isFood         = m_vendor->getCategory() == VendorCategory::Food;
-    int  avail          = isFood ? md->getAvailableFood() : md->getAvailableArtisan();
-    bool hasBooking     = m_manager->hasBooking(m_vendor, md);
-    bool onWaitlist     = m_manager->isOnWaitlist(m_vendor, md);
-    bool isCompliant    = m_manager->vendorIsCompliant(m_vendor);
-    // One-at-a-time rule: already booked a different date
+    bool isFood          = m_vendor->getCategory() == VendorCategory::Food;
+    int  avail           = isFood ? md->getAvailableFood() : md->getAvailableArtisan();
+    bool hasBooking      = m_manager->hasBooking(m_vendor, md);
+    bool onWaitlist      = m_manager->isOnWaitlist(m_vendor, md);
+    bool isNotified      = m_manager->isWaitlistNotified(m_vendor, md);  // ADD THIS
+    bool isCompliant     = m_manager->vendorIsCompliant(m_vendor);
     bool hasOtherBooking = !hasBooking && m_manager->hasActiveBooking(m_vendor);
 
-    // Book: compliant, stall available, no booking here, no booking elsewhere, not on waitlist
-    m_bookBtn->setEnabled(isCompliant && avail > 0 && !hasBooking && !hasOtherBooking && !onWaitlist);
-    // Waitlist: compliant, no stalls, no booking here, not already on this waitlist
+    // CHANGE this line — allow booking if notified even while on waitlist
+    bool canBook = isCompliant && avail > 0 && !hasBooking && !hasOtherBooking
+                   && (!onWaitlist || isNotified);
+    m_bookBtn->setEnabled(canBook);
     m_waitlistBtn->setEnabled(isCompliant && avail == 0 && !hasBooking && !onWaitlist);
     m_cancelBookingBtn->setEnabled(hasBooking);
     m_leaveWaitlistBtn->setEnabled(onWaitlist);
@@ -288,6 +289,8 @@ void MarketScheduleScreen::updateActionButtons() {
         status = "✅  You have a booking for this date. You may cancel it.";
     else if (hasOtherBooking)
         status = "ℹ  You already have an active booking on another date. Cancel it first to book here.";
+    else if (onWaitlist && isNotified)  // ADD THIS CASE
+        status = "🔔  A stall is available for you! Click \"Book Stall\" to confirm your spot.";
     else if (onWaitlist) {
         int pos = m_manager->getWaitlistPosition(m_vendor, md);
         status = QString("⏳  You are #%1 on the waitlist for this date.").arg(pos);

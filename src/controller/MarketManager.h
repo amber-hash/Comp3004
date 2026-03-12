@@ -55,6 +55,9 @@ public:
     // Returns true if the vendor is on the waitlist for this date.
     bool isOnWaitlist(Vendor* vendor, MarketDate* date);
 
+    // Returns true if the vendor gets notified on waitlist
+    bool isWaitlistNotified(Vendor* vendor, MarketDate* date);
+
     // ── Vendor Data ──────────────────────────────────────────────────────────
     // Returns all bookings for a vendor.
     QList<Booking> getBookingsForVendor(Vendor* vendor);

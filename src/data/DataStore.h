@@ -34,6 +34,7 @@ public:
     bool joinWaitlist(int vendorId, int marketDateId);
     bool leaveWaitlist(int vendorId, int marketDateId);
     bool vendorOnWaitlist(int vendorId, int marketDateId) const;
+    bool vendorWaitlistNotified(int vendorId, int marketDateId) const;
     int getWaitlistPosition(int vendorId, int marketDateId) const;
     void processWaitlistOnCancellation(int marketDateId, VendorCategory category);
 

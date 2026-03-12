@@ -19,17 +19,17 @@ void DataStore::initialize() {
 }
 
 void DataStore::seedUsers() {
-    // 4 food vendors
+    // 5 food vendors
     {
         Vendor v(1, "freshharvest", "Fresh Harvest Farm", "Fresh Harvest Farm",
                  "Alice Johnson", "alice@freshharvest.com", "613-555-0101",
                  "123 Farm Road, Hintonville, ON", VendorCategory::Food);
-        v.addComplianceDoc(ComplianceDoc(DocType::BusinessLicence, "BL-2025-0045",
-                                          QDate(2026, 12, 31)));
+        v.addComplianceDoc(ComplianceDoc(DocType::BusinessLicence, "BL-202-0045",
+                                          QDate(2027, 12, 31)));
         v.addComplianceDoc(ComplianceDoc(DocType::LiabilityInsurance, "POL-8821-FH",
-                                          QDate(2026, 12, 31), "Intact Insurance"));
+                                          QDate(2027, 12, 31), "Intact Insurance"));
         v.addComplianceDoc(ComplianceDoc(DocType::FoodHandlerCert, "OFH-2024-9912",
-                                          QDate(2026, 8, 15)));
+                                          QDate(2027, 8, 15)));
         m_vendors.append(v);
     }
     {
@@ -37,11 +37,11 @@ void DataStore::seedUsers() {
                  "Bob Martin", "bob@sunrisebakery.com", "613-555-0202",
                  "45 Baker Street, Hintonville, ON", VendorCategory::Food);
         v.addComplianceDoc(ComplianceDoc(DocType::BusinessLicence, "BL-2025-0088",
-                                          QDate(2026, 11, 30)));
+                                          QDate(2027, 11, 30)));
         v.addComplianceDoc(ComplianceDoc(DocType::LiabilityInsurance, "POL-5544-SB",
-                                          QDate(2026, 11, 30), "Desjardins Insurance"));
+                                          QDate(2027, 11, 30), "Desjardins Insurance"));
         v.addComplianceDoc(ComplianceDoc(DocType::FoodHandlerCert, "OFH-2024-3301",
-                                          QDate(2026, 10, 1)));
+                                          QDate(2027, 10, 1)));
         m_vendors.append(v);
     }
     {
@@ -53,7 +53,7 @@ void DataStore::seedUsers() {
         v.addComplianceDoc(ComplianceDoc(DocType::LiabilityInsurance, "POL-7723-GV",
                                           QDate(2026, 10, 31), "Aviva Canada"));
         v.addComplianceDoc(ComplianceDoc(DocType::FoodHandlerCert, "OFH-2025-1104",
-                                          QDate(2026, 9, 30)));
+                                          QDate(2027, 9, 30)));
         m_vendors.append(v);
     }
     {
@@ -62,20 +62,34 @@ void DataStore::seedUsers() {
                  "9 Maple Drive, Hintonville, ON", VendorCategory::Food);
         // Missing food handler cert - to test compliance blocking
         v.addComplianceDoc(ComplianceDoc(DocType::BusinessLicence, "BL-2025-0156",
-                                          QDate(2026, 12, 31)));
+                                          QDate(2027, 12, 31)));
         v.addComplianceDoc(ComplianceDoc(DocType::LiabilityInsurance, "POL-3310-MR",
-                                          QDate(2026, 12, 31), "TD Insurance"));
+                                          QDate(2027, 12, 31), "TD Insurance"));
         m_vendors.append(v);
     }
+
+    {
+        Vendor v(11, "riversidefarm", "Riverside Farm", "Riverside Farm",
+                 "Tom Harris", "tom@riversidefarm.com", "613-555-0909",
+                 "99 River Road, Hintonville, ON", VendorCategory::Food);
+        v.addComplianceDoc(ComplianceDoc(DocType::BusinessLicence, "BL-2025-0400",
+                                          QDate(2027, 12, 31)));
+        v.addComplianceDoc(ComplianceDoc(DocType::LiabilityInsurance, "POL-1234-RF",
+                                          QDate(2027, 12, 31), "Intact Insurance"));
+        v.addComplianceDoc(ComplianceDoc(DocType::FoodHandlerCert, "OFH-2025-5500",
+                                          QDate(2027, 8, 15)));
+        m_vendors.append(v);
+    }
+
     // 4 artisan vendors
     {
         Vendor v(5, "claycreations", "Clay Creations Studio", "Clay Creations Studio",
                  "Emma Brown", "emma@claycreations.com", "613-555-0505",
                  "22 Potter Street, Hintonville, ON", VendorCategory::Artisan);
         v.addComplianceDoc(ComplianceDoc(DocType::BusinessLicence, "BL-2025-0201",
-                                          QDate(2026, 12, 31)));
+                                          QDate(2027, 12, 31)));
         v.addComplianceDoc(ComplianceDoc(DocType::LiabilityInsurance, "POL-9900-CC",
-                                          QDate(2026, 12, 31), "Sun Life"));
+                                          QDate(2027, 12, 31), "Sun Life"));
         m_vendors.append(v);
     }
     {
@@ -83,9 +97,9 @@ void DataStore::seedUsers() {
                  "Frank Davis", "frank@woodcraft.com", "613-555-0606",
                  "55 Timber Road, Hintonville, ON", VendorCategory::Artisan);
         v.addComplianceDoc(ComplianceDoc(DocType::BusinessLicence, "BL-2025-0233",
-                                          QDate(2026, 12, 31)));
+                                          QDate(2027, 12, 31)));
         v.addComplianceDoc(ComplianceDoc(DocType::LiabilityInsurance, "POL-1122-WC",
-                                          QDate(2026, 12, 31), "Manulife"));
+                                          QDate(2027, 12, 31), "Manulife"));
         m_vendors.append(v);
     }
     {
@@ -93,9 +107,9 @@ void DataStore::seedUsers() {
                  "Grace Kim", "grace@silkthread.com", "613-555-0707",
                  "33 Weaver Ave, Hintonville, ON", VendorCategory::Artisan);
         v.addComplianceDoc(ComplianceDoc(DocType::BusinessLicence, "BL-2025-0277",
-                                          QDate(2026, 12, 31)));
+                                          QDate(2027, 12, 31)));
         v.addComplianceDoc(ComplianceDoc(DocType::LiabilityInsurance, "POL-4455-ST",
-                                          QDate(2026, 12, 31), "Co-operators"));
+                                          QDate(2027, 12, 31), "Co-operators"));
         m_vendors.append(v);
     }
     {
@@ -103,9 +117,9 @@ void DataStore::seedUsers() {
                  "Hannah Park", "hannah@thejewelrybox.com", "613-555-0808",
                  "12 Gem Court, Hintonville, ON", VendorCategory::Artisan);
         v.addComplianceDoc(ComplianceDoc(DocType::BusinessLicence, "BL-2025-0299",
-                                          QDate(2026, 12, 31)));
+                                          QDate(2027, 12, 31)));
         v.addComplianceDoc(ComplianceDoc(DocType::LiabilityInsurance, "POL-6677-JB",
-                                          QDate(2026, 12, 31), "Economical Insurance"));
+                                          QDate(2027, 12, 31), "Economical Insurance"));
         m_vendors.append(v);
     }
     // Market operator
@@ -207,6 +221,8 @@ bool DataStore::bookStall(int vendorId, int marketDateId) {
     if (vendor->getCategory() == VendorCategory::Food) md->bookFood();
     else md->bookArtisan();
 
+    leaveWaitlist(vendorId, marketDateId); //removes vendor fromm waitlist
+
     vendor->addNotification(QString("✅ Booking confirmed for %1 (Conf: %2)")
                             .arg(md->getDate().toString("MMMM d, yyyy"))
                             .arg(b.getConfirmationNumber()));
@@ -245,6 +261,14 @@ bool DataStore::vendorOnWaitlist(int vendorId, int marketDateId) const {
     for (const auto& w : m_waitlist) {
         if (w.getVendorId() == vendorId && w.getMarketDateId() == marketDateId)
             return true;
+    }
+    return false;
+}
+
+bool DataStore::vendorWaitlistNotified(int vendorId, int marketDateId) const {
+    for (const auto& w : m_waitlist) {
+        if (w.getVendorId() == vendorId && w.getMarketDateId() == marketDateId)
+            return w.isNotified();
     }
     return false;
 }
