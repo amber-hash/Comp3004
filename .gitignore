@@ -1,0 +1,12 @@
+*.o
+*.a
+moc_*
+ui_*
+arc_*
+Makefile
+.qmake.stash
+HintonMarket
+HintonMarket.pro.user
+build/
+debug/
+release/
